@@ -4,13 +4,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Refresh" content="0; url='https://www.commafeed.com'" />
-    <title>Redirect</title>
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/haplessen/haplessen.github.io/main/apple-touch-icon.png" sizes="192x192"> 
+    <title>RSS</title>
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/haplessen/haplessen.github.io/main/apple-touch-icon.png" sizes="192x192"> 
     <link rel="icon" href="/apple-touch-icon.png" />
   
-</head>
-<body>
- 
-</body>
-</html>
+  <style>
+      @font-face {
+      font-family: 'applemyraidpro.woff';
+      src: url('fonts/applemyraidpro.woff')  format('woff');
+      font-weight: normal;
+      font-style: normal;
+      }
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'applemyraidpro.woff', sans-serif;
+          background-color: #010101;
+          font-size: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+      }
+
+      .container {
+          background-color: #010101;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 1rem;
+      }
+
+      .links {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+
+      .link-box {
+          background-color: #010101;
+          color: white;
+          padding: 1rem;
+          border-radius: 5px;
+          text-decoration: none;
+          margin: 0.5rem;
+          transition: background-color 0.3s ease;
+      }
+
+      .link-box:hover {
+          background-color: grey;
+      }
+
+      @media screen and (max-width: 768px) {
+          .container {
+              padding: 1rem;
+          }
+
+          .link-box {
+              padding: 0.5rem 1rem;
+          }
+      }
+  </style>
+    <script>
+            function toggleLinks() {
+          const links = document.querySelector('.links');
+          links.style.visibility = links.style.visibility === 'visible' ? 'hidden' : 'visible';
+          links.style.opacity = links.style.opacity === '1' ? '0' : '1';
+      }
+  </script>
+ </head>
+ <body>
+     <div class="container">
+        <img src="https://raw.githubusercontent.com/haplessen/haplessen.github.io/main/apple-touch-icon.png" width="125" height="125" onclick="toggleLinks()" style="cursor: pointer;">
+             <div class="links" style="visibility: hidden; ">
+          <a href="https://www.commafeed.com" class="link-box">CommaFeed</a>
+          <a href="https://feedreader.com/online" class="link-box">Feedreader</a>
+        </div>
+     </div>
+ </body>
+ </html>
