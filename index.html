@@ -71,6 +71,26 @@
               padding: 0.5rem 1rem;
           }
       }
+    .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          padding-top: 100px;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+      }
   </style>
     <script>
             function toggleLinks() {
@@ -78,14 +98,40 @@
           links.style.visibility = links.style.visibility === 'visible' ? 'hidden' : 'visible';
           links.style.opacity = links.style.opacity === '1' ? '0' : '1';
       }
-  </script>
- </head>
- <body>
-     <div class="container">
+
+        
+         function showModal() {
+          const modal = document.querySelector('#rssModal');
+          modal.style.display = 'block';
+      }
+
+      function hideModal() {
+          const modal = document.querySelector('#rssModal');
+          modal.style.display = 'none';
+      }
+ </script>
+</head>
+<body>
+    <div class="container">
         <img src="https://raw.githubusercontent.com/haplessen/haplessen.github.io/main/apple-touch-icon.png" width="125" height="125" onclick="toggleLinks()" style="cursor: pointer;">
-             <div class="links" style="visibility: hidden; ">
-          <a href="https://freshrss.org/cloud-providers.html" class="link-box">RSS</a>
+
+        <div class="links" style="visibility: hidden; ">
+            <!-- Add onclick function to show modal -->
+            <a href="#" class="link-box" onclick="showModal(); return false;">RSS</a>
         </div>
-     </div>
- </body>
- </html>
+
+        <!-- Modal -->
+        <div id="rssModal" class="modal">
+            <div class="modal-content">
+                <span onclick="hideModal()" style="cursor: pointer; float: right;">&times;</span>
+                <p>Select a feed:</p>
+                <a href="https://www.commafeed.com" target="_blank">CommaFeed</a>
+                <br/>
+                <a href="https://freshrss.prodottoinrete.com" target="_blank">FreshRSS</a>
+                <br/>
+                <a href="https://feedreader.com/online" target="_blank">FeedReader Online</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
