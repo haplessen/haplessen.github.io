@@ -71,66 +71,47 @@
               padding: 0.5rem 1rem;
           }
       }
-    .modal {
-          display: none;
-          position: fixed;
-          z-index: 1;
-          padding-top: 100px;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          overflow: auto;
-          background-color: rgba(0, 0, 0, 0.4);
-      }
+    .dropdown {
+           visibility: hidden;
+           color: black;
+           margin: 20px 0;
+       }
 
-      .modal-content {
-          background-color: #fefefe;
-          margin: auto;
-          padding: 20px;
-          border: 1px solid #888;
-          width: 80%;
-      }
+          
   </style>
     <script>
-            function toggleLinks() {
-          const links = document.querySelector('.links');
-          links.style.visibility = links.style.visibility === 'visible' ? 'hidden' : 'visible';
-          links.style.opacity = links.style.opacity === '1' ? '0' : '1';
-      }
+        function toggleLinks() {
+              const links = document.querySelector('.links');
+              links.style.visibility = links.style.visibility === 'visible' ? 'hidden' : 'visible';
+              links.style.opacity = links.style.opacity === '1' ? '0' : '1';
+          }
 
-        
-         function showModal() {
-          const modal = document.querySelector('#rssModal');
-          modal.style.display = 'block';
-      }
+        function toggleDropdown() {
+                const dropdown = document.querySelector('.dropdown');
+                dropdown.style.visibility = dropdown.style.visibility === 'visible' ? 'hidden' : 'visible';
+            }
 
-      function hideModal() {
-          const modal = document.querySelector('#rssModal');
-          modal.style.display = 'none';
-      }
+            function goToFeed() {
+                const dropdown = document.querySelector('.dropdown');
+                if(dropdown.value != ""){
+                    window.location.href = dropdown.value;
+                }
+            }
  </script>
 </head>
 <body>
     <div class="container">
         <img src="https://raw.githubusercontent.com/haplessen/haplessen.github.io/main/apple-touch-icon.png" width="125" height="125" onclick="toggleLinks()" style="cursor: pointer;">
 
-        <div class="links" style="visibility: hidden; ">
-            <!-- Add onclick function to show modal -->
-            <a href="#" class="link-box" onclick="showModal(); return false;">RSS</a>
-        </div>
-
-        <!-- Modal -->
-        <div id="rssModal" class="modal">
-            <div class="modal-content">
-                <span onclick="hideModal()" style="cursor: pointer; float: right;">&times;</span>
-                <p>Select a feed:</p>
-                <a href="https://www.commafeed.com" target="_blank">CommaFeed</a>
-                <br/>
-                <a href="https://freshrss.prodottoinrete.com" target="_blank">FreshRSS</a>
-                <br/>
-                <a href="https://feedreader.com/online" target="_blank">FeedReader Online</a>
-            </div>
+        <div class="links" style="visibility: hidden; opacity: 0;">
+            <!-- Add onclick function to toggle dropdown -->
+            <a href="#" class="link-box" onclick="toggleDropdown(); return false;">RSS</a>
+            <select class="dropdown" onchange="goToFeed();">
+                <option value="">RSS Readers</option>
+                <option value="https://www.commafeed.com">CommaFeed</option>
+                <option value="https://freshrss.prodottoinrete.com">FreshRSS</option>
+                <option value="https://feedreader.com/online">FeedReader</option>
+            </select>
         </div>
     </div>
 </body>
