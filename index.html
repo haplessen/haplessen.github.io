@@ -78,20 +78,24 @@
              
           }
 
-          @media screen and (min-width: 769px) { /* add this block */
-              .dropdown {
-                  font-size: 24px; /* Increase the font size */
-                  padding: 10px; /* Add some padding */
-                  width: 150px;
-                  
-              }
-              
-            
-          }
+    .not-iPhone .dropdown {
+    /* Add your custom styles for non-iPhones here. */
+    font-size: 24px;
+    padding: 10px;
+    width: 150px;
+}
 
+        @media screen and (min-width: 769px) {
+    body:not(.not-iPhone) .dropdown {
+        font-size: 24px;
+        padding: 10px;
+        width: 150px;
+    }
+}
           
   </style>
     <script>
+
         function toggleLinks() {
               const links = document.querySelector('.links');
               links.style.visibility = links.style.visibility === 'visible' ? 'hidden' : 'visible';
@@ -109,6 +113,15 @@
                     window.location.href = dropdown.value;
                 }
             }
+
+
+        window.onload = function() {
+    var userAgent = navigator.userAgent || navigator.vendor;
+    if (!(/iPhone/i.test(userAgent))) {
+        document.body.classList.add("not-iPhone");
+    }
+}
+        
  </script>
 </head>
 <body>
